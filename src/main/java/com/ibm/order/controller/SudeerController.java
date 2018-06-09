@@ -1,5 +1,6 @@
 package com.ibm.order.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.websocket.server.PathParam;
@@ -32,4 +33,20 @@ public class SudeerController {
        return null;
        
    }
+    
+    @RequestMapping(value="/productLocation/storeNo")
+    public List<ProductLocation> getProductLocationByStoreNo(@PathParam(value="storeNo") Integer storeNo){
+	return productLocationRepository.findByStoreNo(storeNo);
+    }
+    
+    @RequestMapping(value="/productLocation/locationId")
+    public List<ProductLocation> getProductLocationByLocationId(@PathParam(value="locationId") Integer locationId){
+	return productLocationRepository.findByLocationId(locationId);
+    }
+    
+    @RequestMapping(value="//productLocation/locationId/storeNo")
+    public List<ProductLocation> getProductLocationByStoreNoAndLocationId(@PathParam(value="storeNo") Integer storeNo,@PathParam(value="locationId") Integer locationId){
+	return productLocationRepository.findByStoreNoAndLocationId(storeNo, locationId);
+	
+    }
 }
